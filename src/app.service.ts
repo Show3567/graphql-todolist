@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Todo } from './entities/todo.entity';
 
 @Injectable()
 export class AppService {
@@ -74,11 +75,4 @@ export class AppService {
   getHello(): Todo[] {
     return this.todolist;
   }
-}
-
-export interface Todo {
-  id: number;
-  title: string;
-  userId: number;
-  completed: boolean;
 }
