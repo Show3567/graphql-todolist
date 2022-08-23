@@ -36,3 +36,8 @@ export class DeleteTodoInput {
   @Field((type) => Number)
   id: number;
 }
+@ObjectType()
+export class DeleteTodoOutput {
+  @Field((type) => Todo)
+  todo: Todo;
+}

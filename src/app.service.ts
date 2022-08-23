@@ -1,5 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { AddTodoInput, DeleteTodoInput, GetTodosOutput } from './dto/todo.dto';
+import {
+  AddTodoInput,
+  DeleteTodoInput,
+  DeleteTodoOutput,
+  GetTodosOutput,
+} from './dto/todo.dto';
 import { Todo } from './entities/todo.entity';
 
 @Injectable()
@@ -87,7 +92,9 @@ export class AppService {
     this.todolist = [...this.todolist, todo];
     return { todo };
   }
-  deleteTodo({ id }: DeleteTodoInput) {
+  deleteTodo({ id }: DeleteTodoInput): DeleteTodoOutput {
+    const todo = { ...this.todolist.find((todo) => todo.id === id) };
     this.todolist = this.todolist.filter((todo) => todo.id !== id);
+    return { todo };
   }
 }

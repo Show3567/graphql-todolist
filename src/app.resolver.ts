@@ -4,6 +4,7 @@ import {
   AddTodoInput,
   AddTodoOutput,
   DeleteTodoInput,
+  DeleteTodoOutput,
   GetTodosOutput,
 } from './dto/todo.dto';
 
@@ -19,8 +20,10 @@ export class AppResolver {
   addTodo(@Args('input') addTodoInput: AddTodoInput): AddTodoOutput {
     return this.appService.addTodo(addTodoInput);
   }
-  @Mutation()
-  deleteTodo(@Args('input') deleteTodoInput: DeleteTodoInput): void {
-    this.appService.deleteTodo(deleteTodoInput);
+  @Mutation((returns) => DeleteTodoOutput)
+  deleteTodo(
+    @Args('input') deleteTodoInput: DeleteTodoInput,
+  ): DeleteTodoOutput {
+    return this.appService.deleteTodo(deleteTodoInput);
   }
 }
