@@ -92,9 +92,7 @@ export class AppService {
     this.todolist = [...this.todolist, todo];
     return { todo };
   }
-  deleteTodo({ id }: DeleteTodoInput): DeleteTodoOutput {
-    const todo = { ...this.todolist.find((todo) => todo.id === id) };
+  deleteTodo({ id }: DeleteTodoInput) {
     this.todolist = this.todolist.filter((todo) => todo.id !== id);
-    return { todo };
   }
 }
