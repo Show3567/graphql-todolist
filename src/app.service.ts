@@ -90,9 +90,11 @@ export class AppService {
       id: Math.floor(Math.random() * 1000_000_000),
     };
     this.todolist = [...this.todolist, todo];
+    console.log(this.todolist);
     return { todo };
   }
   deleteTodo({ id }: DeleteTodoInput) {
     this.todolist = this.todolist.filter((todo) => todo.id !== id);
+    console.log(this.todolist);
   }
 }
