@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { GetTodoOutput } from './dto/todo.dto';
 import { Todo } from './entities/todo.entity';
 
 @Injectable()
@@ -72,7 +73,9 @@ export class AppService {
     },
   ];
 
-  getHello(): Todo[] {
-    return this.todolist;
+  getTodos(): GetTodoOutput {
+    return {
+      todos: this.todolist,
+    };
   }
 }
