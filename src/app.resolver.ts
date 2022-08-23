@@ -1,9 +1,8 @@
 import { Query, Resolver } from '@nestjs/graphql';
-import { Todo } from './entities/todo.entity';
 import { AppService } from './app.service';
 import { GetTodoOutput } from './dto/todo.dto';
 
-@Resolver((of) => Todo)
+@Resolver()
 export class AppResolver {
   constructor(private readonly appService: AppService) {}
 
