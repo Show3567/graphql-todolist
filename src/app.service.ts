@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { AddTodoInput, GetTodosOutput } from './dto/todo.dto';
+import { AddTodoInput, DeleteTodoInput, GetTodosOutput } from './dto/todo.dto';
 import { Todo } from './entities/todo.entity';
 
 @Injectable()
@@ -82,9 +82,12 @@ export class AppService {
   addTodo(todoInput: AddTodoInput) {
     const todo = {
       ...todoInput,
-      id: Math.floor(Math.random() * 1000000000),
+      id: Math.floor(Math.random() * 1000_000_000),
     };
     this.todolist = [...this.todolist, todo];
     return { todo };
+  }
+  deleteTodo({ id }: DeleteTodoInput) {
+    this.todolist = this.todolist.filter((todo) => todo.id !== id);
   }
 }

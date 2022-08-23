@@ -1,6 +1,11 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { AppService } from './app.service';
-import { AddTodoInput, AddTodoOutput, GetTodosOutput } from './dto/todo.dto';
+import {
+  AddTodoInput,
+  AddTodoOutput,
+  DeleteTodoInput,
+  GetTodosOutput,
+} from './dto/todo.dto';
 
 @Resolver()
 export class AppResolver {
@@ -13,5 +18,9 @@ export class AppResolver {
   @Mutation((returns) => AddTodoOutput)
   addTodo(@Args('input') addTodoInput: AddTodoInput): AddTodoOutput {
     return this.appService.addTodo(addTodoInput);
+  }
+  @Mutation()
+  deleteTodo(@Args('input') deleteTodoInput: DeleteTodoInput): void {
+    this.appService.deleteTodo(deleteTodoInput);
   }
 }

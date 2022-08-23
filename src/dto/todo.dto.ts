@@ -14,7 +14,7 @@ export class GetTodosOutput {
   todos: Todo[];
 }
 
-//* ~~~~~~~~~~~~~~~~~~~~~~~~ Add Todos
+//* ~~~~~~~~~~~~~~~~~~~~~~~~ Add Todo
 @InputType()
 export class AddTodoInput {
   @Field((type) => Number)
@@ -28,4 +28,11 @@ export class AddTodoInput {
 export class AddTodoOutput {
   @Field((type) => Todo)
   todo: Todo;
+}
+
+//* ~~~~~~~~~~~~~~~~~~~~~~~~ Delete Todo
+@InputType()
+export class DeleteTodoInput {
+  @Field((type) => Number)
+  id: number;
 }
