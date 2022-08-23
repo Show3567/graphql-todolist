@@ -1,4 +1,10 @@
-import { Field, InputType, ObjectType, PickType } from '@nestjs/graphql';
+import {
+  Field,
+  InputType,
+  ObjectType,
+  PartialType,
+  PickType,
+} from '@nestjs/graphql';
 import { Todo } from '../entities/todo.entity';
 
 //* ~~~~~~~~~~~~~~~~~~~~~~~~ Get Todos
@@ -13,10 +19,8 @@ export class GetTodosOutput {
 export class AddTodoInput {
   @Field((type) => Number)
   userId: number;
-
   @Field((type) => String)
   title: string;
-
   @Field((type) => Boolean)
   completed: boolean;
 }
