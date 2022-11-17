@@ -10,18 +10,22 @@ import {
 
 @Resolver()
 export class AppResolver {
-  constructor(private readonly appService: AppService) { }
+  constructor(private readonly appService: AppService) {}
 
   @Query((returns) => GetTodosOutput)
   getTodos(): GetTodosOutput {
     return this.appService.getTodos();
   }
+
   @Mutation((returns) => AddTodoOutput)
   addTodo(@Args('input') addTodoInput: AddTodoInput): AddTodoOutput {
     return this.appService.addTodo(addTodoInput);
   }
+
   @Mutation((returns) => DeleteTodoOutput)
-  deleteTodo(@Args('input') deleteTodoInput: DeleteTodoInput): DeleteTodoOutput {
+  deleteTodo(
+    @Args('input') deleteTodoInput: DeleteTodoInput,
+  ): DeleteTodoOutput {
     return this.appService.deleteTodo(deleteTodoInput);
   }
 }

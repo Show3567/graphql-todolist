@@ -77,7 +77,6 @@ export class AppService {
       completed: true,
     },
   ];
-  id: number = Math.floor(Math.random() * 1000000000);
 
   getTodos(): GetTodosOutput {
     return {
@@ -87,10 +86,9 @@ export class AppService {
   addTodo(todoInput: AddTodoInput) {
     const todo = {
       ...todoInput,
-      id: Math.floor(Math.random() * 1000_000_000),
+      id: Math.floor(Math.random() * 1000_000),
     };
     this.todolist = [...this.todolist, todo];
-    console.log(this.todolist);
     return { todo };
   }
   deleteTodo({ id }: DeleteTodoInput): DeleteTodoOutput {
