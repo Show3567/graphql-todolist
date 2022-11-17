@@ -93,8 +93,10 @@ export class AppService {
     console.log(this.todolist);
     return { todo };
   }
-  deleteTodo({ id }: DeleteTodoInput) {
+  deleteTodo({ id }: DeleteTodoInput): DeleteTodoOutput {
+    const todo = { ...this.todolist.find(todo => +todo.id === +id) };
     this.todolist = this.todolist.filter((todo) => todo.id !== id);
-    console.log(this.todolist);
+
+    return { todo };
   }
 }

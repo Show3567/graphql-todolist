@@ -13,8 +13,6 @@ async function bootstrap() {
 bootstrap();
 
 /*
-
   &Graphql:
   $ npm i @nestjs/graphql @nestjs/apollo graphql apollo-server-express
-
  */
