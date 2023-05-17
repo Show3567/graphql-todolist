@@ -3,6 +3,7 @@ import {
   AddTodoInput,
   DeleteTodoInput,
   DeleteTodoOutput,
+  GetTodoOutput,
   GetTodosOutput,
 } from './dto/todo.dto';
 import { Todo } from './entities/todo.entity';
@@ -83,6 +84,10 @@ export class AppService {
       todos: this.todolist,
     };
   }
+  getTodo(id: number): GetTodoOutput {
+    const todo = this.todolist.find((todo) => +todo.id === +id);
+    return { todo };
+  }
   addTodo(todoInput: AddTodoInput) {
     const todo = {
       ...todoInput,
@@ -92,7 +97,7 @@ export class AppService {
     return { todo };
   }
   deleteTodo({ id }: DeleteTodoInput): DeleteTodoOutput {
-    const todo = { ...this.todolist.find(todo => +todo.id === +id) };
+    const todo = { ...this.todolist.find((todo) => +todo.id === +id) };
     this.todolist = this.todolist.filter((todo) => todo.id !== id);
 
     return { todo };

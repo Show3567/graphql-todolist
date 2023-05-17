@@ -14,6 +14,18 @@ export class GetTodosOutput {
   todos: Todo[];
 }
 
+//* ~~~~~~~~~~~~~~~~~~~~~~~~ Get Todo
+@ObjectType()
+export class GetTodoOutput {
+  @Field((type) => Todo)
+  todo: Todo;
+}
+@InputType()
+export class GetTodoInput {
+  @Field((type) => Number)
+  id: number;
+}
+
 //* ~~~~~~~~~~~~~~~~~~~~~~~~ Add Todo
 @InputType()
 export class AddTodoInput {

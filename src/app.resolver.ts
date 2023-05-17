@@ -5,6 +5,8 @@ import {
   AddTodoOutput,
   DeleteTodoInput,
   DeleteTodoOutput,
+  GetTodoInput,
+  GetTodoOutput,
   GetTodosOutput,
 } from './dto/todo.dto';
 
@@ -15,6 +17,10 @@ export class AppResolver {
   @Query((returns) => GetTodosOutput)
   getTodos(): GetTodosOutput {
     return this.appService.getTodos();
+  }
+  @Query((returns) => GetTodoOutput)
+  getTodo(@Args('input') getTodoInput: GetTodoInput): GetTodoOutput {
+    return this.appService.getTodo(getTodoInput.id);
   }
 
   @Mutation((returns) => AddTodoOutput)
